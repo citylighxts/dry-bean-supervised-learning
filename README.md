@@ -1,4 +1,4 @@
-# supervised learning pada Dry Bean: decision tree vs SVM vs ANN vs CNN
+# Supervised learning pada Dry Bean: decision tree vs SVM vs ANN vs CNN
 
 perbandingan empat metode supervised learning, **Decision Tree**, **support vector machine**,
 **artificial neural network (MLP)**, dan **CNN 1D**, buat klasifikasi 7 varietas kacang kering
@@ -6,7 +6,7 @@ di dataset **Dry Bean** (UCI ML Repository, ID 602). isinya EDA, preprocessing, 
 hyperparameter, evaluasi (akurasi, precision, recall, F1), uji signifikansi, dan analisis
 kelebihan kekurangan tiap metode.
 
-### how to run
+### How to run
 
 ```bash
 pip install numpy pandas scipy scikit-learn matplotlib seaborn torch jupyter
@@ -16,7 +16,7 @@ jupyter notebook dry_bean_supervised_learning.ipynb
 bisa dijalankan dari folder kosong mana pun, dataset diunduh otomatis dari UCI waktu sel pemuatan
 data dijalankan (butuh internet). seluruh notebook makan waktu sekitar 9 menit.
 
-## isi notebook
+## Isi notebook
 
 | bagian | isi |
 |---|---|
@@ -27,7 +27,7 @@ data dijalankan (butuh internet). seluruh notebook makan waktu sekitar 9 menit.
 | eksperimen perbaikan model | fitur rasio buat Decision Tree, konfigurasi alternatif SVM dan ANN, ablasi resep CNN |
 | analisis dan kesimpulan | tabel kelebihan kekurangan, kriteria pemilihan metode, keterbatasan |
 
-## ringkasan hasil
+## Ringkasan hasil
 
 data uji 2.709 biji (split stratified 80/20, seed 42):
 
@@ -49,7 +49,7 @@ kesalahan sisa terutama datang dari pasangan varietas yang mirip, `SIRA` dan `DE
 `BOMBAY` selalu terklasifikasi sempurna. rekomendasi praktis buat dataset ini adalah **SVM dengan
 kernel RBF**: akurasinya setara model terbaik, deterministik, dan paling murah dilatih.
 
-## tech stack
+## Tech stack
 
 - **Python**: pandas, numpy, scipy, scikit-learn, matplotlib, seaborn
 - **pemuatan dataset otomatis** lewat `urllib.request` + `zipfile` (pustaka standar), berkas ARFF dibaca pakai `scipy.io.arff`
@@ -57,14 +57,14 @@ kernel RBF**: akurasinya setara model terbaik, deterministik, dan paling murah d
 - **CNN 1D** pakai PyTorch (`BatchNorm`, `Dropout`, Adam, early stopping)
 - **evaluasi:** akurasi, precision, recall, F1 (macro dan weighted), confusion matrix, bootstrap CI, uji McNemar
 
-## catatan reproduksi
+## Catatan reproduksi
 
 semua seed dikunci (`randomState = 42`). bagian scikit-learn seharusnya menghasilkan angka yang sama
 di mesin lain dengan versi pustaka yang mirip. bagian CNN dikunci pakai
 `torch.use_deterministic_algorithms(True)` dan 1 thread supaya bisa diulang persis di mesin yang sama,
 tapi belum tentu identik di mesin atau versi torch lain.
 
-## sumber dataset
+## Sumber dataset
 
 Koklu, M. and Ozkan, I. A. (2020). *Dry Bean* [Dataset]. UCI Machine Learning Repository.
 https://doi.org/10.24432/C50S4B, lisensi CC BY 4.0.
