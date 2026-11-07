@@ -59,7 +59,7 @@ kernel RBF**: akurasinya setara model terbaik, deterministik, dan paling murah d
 
 ## catatan reproduksi
 
-semua seed dikunci (`RANDOM_STATE = 42`). bagian scikit-learn seharusnya menghasilkan angka yang sama
+semua seed dikunci (`randomState = 42`). bagian scikit-learn seharusnya menghasilkan angka yang sama
 di mesin lain dengan versi pustaka yang mirip. bagian CNN dikunci pakai
 `torch.use_deterministic_algorithms(True)` dan 1 thread supaya bisa diulang persis di mesin yang sama,
 tapi belum tentu identik di mesin atau versi torch lain.
